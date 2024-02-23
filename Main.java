@@ -44,4 +44,44 @@ public class Main {
                         new City().readCityRecords(connection);
                         break;
 
+                    case 3:
+
+                        break;
+
+                    case 4:
+
+                        break;
+
+                    case 5:
+
+                        break;
+
+                    case 6:
+
+                        break;
+
+                    case 7:
+
+                        break;
+
+                    case 8:
+
+                        break;
+
+                    case 0:
+
+                        exit = true;
+                        break;
+
+                    default:
+                        System.out.println("Invalid choice try again");
+                }
+            }
+
+            System.out.println("You Exite the Weather application");
+            scanner.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }

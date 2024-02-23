@@ -95,7 +95,7 @@ public class City {
                 double currentWindSpeed = resultSet.getDouble("currentWindSpeed");
 
                 System.out.println("---------------\nCity ID: " + cityId + "\nName: " + cityName + "\nTemperature: " + currentTemperature
-                        + "\nHumidity: " + currentHumidity + "\nWind Speed: " + currentWindSpeed+"------------- \n");
+                        + "\nHumidity: " + currentHumidity + "\nWind Speed: " + currentWindSpeed+"\n------------- ");
             }
         } catch (SQLException e) {
             e.printStackTrace();

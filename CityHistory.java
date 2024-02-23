@@ -51,7 +51,7 @@ public class CityHistory {
 
     public void addHistoricalRecord(Connection connection) throws SQLException {
         try {
-            String query = "INSERT INTO historical_data (historical_data_id, city_id, event_date, temperature) VALUES (?, ?, ?, ?)";
+            String query = "INSERT INTO cityhistory (historicalDataid, cityId, eventDate, temperature) VALUES (?, ?, ?, ?)";
             try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
                 preparedStatement.setInt(1, this.historicalDataId);
                 preparedStatement.setInt(2, this.cityId);
@@ -69,12 +69,12 @@ public class CityHistory {
     public static void readHistoricalRecords(Connection connection) {
         try {
             Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery("SELECT * FROM historical_data");
+            ResultSet resultSet = statement.executeQuery("SELECT * FROM cityhistory");
 
             while (resultSet.next()) {
-                int historicalDataId = resultSet.getInt("historical_data_id");
-                int cityId = resultSet.getInt("city_id");
-                String eventDate = resultSet.getString("event_date");
+                int historicalDataId = resultSet.getInt("historicalDataId");
+                int cityId = resultSet.getInt("cityId");
+                String eventDate = resultSet.getString("eventDate");
                 double temperature = resultSet.getDouble("temperature");
 
                 System.out.println("Historical Data ID: " + historicalDataId + "\nCity ID: " + cityId + ",\nEvent Date: " + eventDate
@@ -87,7 +87,7 @@ public class CityHistory {
 
     public void updateHistoricalRecord(Connection connection) {
         try {
-            String query = "UPDATE historical_data SET event_date = ?, temperature = ? WHERE historical_data_id = ?";
+            String query = "UPDATE cityhistory SET eventDate = ?, temperature = ? WHERE historicalDataId = ?";
             try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
                 preparedStatement.setString(1, this.eventDate);
                 preparedStatement.setDouble(2, this.temperature);
@@ -103,7 +103,7 @@ public class CityHistory {
 
     public void deleteHistoricalRecord(Connection connection) {
         try {
-            String query = "DELETE FROM historical_data WHERE historical_data_id = ?";
+            String query = "DELETE FROM cityhistory WHERE historicalDataId = ?";
             try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
                 preparedStatement.setInt(1, this.historicalDataId);
 

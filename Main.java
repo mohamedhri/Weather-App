@@ -117,7 +117,7 @@ public class Main {
                 }
             }
 
-            System.out.println("Exiting Weather Application");
+            System.out.println("Exiting Weather Application1");
             scanner.close();
         } catch (SQLException e) {
             e.printStackTrace();

@@ -45,27 +45,66 @@ public class Main {
                         break;
 
                     case 3:
+                        System.out.print("Enter City ID to update: ");
+                        int updateCityId = scanner.nextInt();
+                        System.out.print("Enter new City Name: ");
+                        String updatedCityName = scanner.next();
+                        System.out.print("Enter new Current Temperature: ");
+                        double updatedTemperature = scanner.nextDouble();
+                        System.out.print("Enter new Current Humidity: ");
+                        double updatedHumidity = scanner.nextDouble();
+                        System.out.print("Enter new Current Wind Speed: ");
+                        double updatedWindSpeed = scanner.nextDouble();
 
+                        City cityToUpdate = new City(updateCityId, updatedCityName, updatedTemperature, updatedHumidity, updatedWindSpeed);
+                        cityToUpdate.updateCityRecord(connection);
                         break;
 
                     case 4:
+                        System.out.print("Enter City ID to delete: ");
+                        int deleteCityId = scanner.nextInt();
 
+                        City cityToDelete = new City(deleteCityId, "", 0.0, 0.0, 0.0);
+                        cityToDelete.deleteCityRecord(connection);
                         break;
 
                     case 5:
+                        System.out.print("Enter Historical Data ID: ");
+                        int historicalDataId = scanner.nextInt();
+                        System.out.print("Enter City ID: ");
+                        int historicalCityId = scanner.nextInt();
+                        System.out.print("Enter Event Date (YYYY-MM-DD): ");
+                        String eventDate = scanner.next();
+                        System.out.print("Enter Temperature: ");
+                        double historicalTemperature = scanner.nextDouble();
 
+                        CityHistory newHistoricalRecord = new CityHistory(historicalDataId, historicalCityId, eventDate, historicalTemperature);
+                        newHistoricalRecord.addHistoricalRecord(connection);
                         break;
 
                     case 6:
-
+                        CityHistory.readHistoricalRecords(connection);
                         break;
 
                     case 7:
+                        System.out.print("Enter Historical Data ID to update: ");
+                        int updateHistoricalDataId = scanner.nextInt();
+                        System.out.print("Enter new Event Date (YYYY-MM-DD): ");
+                        String updatedEventDate = scanner.next();
+                        System.out.print("Enter new Temperature: ");
+                        double updatedHistoricalTemperature = scanner.nextDouble();
 
+                        CityHistory historicalRecordToUpdate = new CityHistory(updateHistoricalDataId, 0, updatedEventDate, updatedHistoricalTemperature);
+                        historicalRecordToUpdate.updateHistoricalRecord(connection);
                         break;
 
                     case 8:
+                        // Supprimer les historiques
+                        System.out.print("Enter Historical Data ID to delete: ");
+                        int deleteHistoricalDataId = scanner.nextInt();
 
+                        CityHistory historicalRecordToDelete = new CityHistory(deleteHistoricalDataId, 0, "", 0.0);
+                        historicalRecordToDelete.deleteHistoricalRecord(connection);
                         break;
 
                     case 0:
@@ -78,7 +117,7 @@ public class Main {
                 }
             }
 
-            System.out.println("You Exite the Weather application");
+            System.out.println("Exiting Weather Application");
             scanner.close();
         } catch (SQLException e) {
             e.printStackTrace();
